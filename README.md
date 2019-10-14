@@ -1,6 +1,6 @@
 # Task warrior and Azure Devops synchronizer version 1.0.0
 
-This is a free tool allowing to synchronize Azure Devops Work items with local Task warrior.
+This is a free tool allowing to synchronize [Azure Devops](https://azure.microsoft.com/en-us/solutions/devops/) Work items with local [Task warrior](https://taskwarrior.org/).
 
 Features:
 
@@ -38,7 +38,23 @@ pip3 install -r requirements.txt
 ## Configuration files
 You must create your own configuration file **~/.config/task_warrior_azure_devops.conf**, adapting this tool to your account and your environment.
 
-You can create your configuration file from the sample provided in this project, under **misc/task_warrior_azure_devops.conf.sample**.
+You can create your configuration file from the [sample](misc/task_warrior_azure_devops.conf.sample) provided in this project, under **misc/task_warrior_azure_devops.conf.sample**.
+
+## Usage
+### Prerequisites
+Before using this tool, you must:
+
+ - install [Task warrior](https://taskwarrior.org/)
+ - create a [Personal Access Token](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)
+ - create your configuration file from the provided [sample](misc/task_warrior_azure_devops.conf.sample)
+
+### Samples
+For easiest access, you can add the main directory of the project to your **$PATH**.
+
+You can launch directly the tool:
+```bash
+task_warrior_azure_devops.py
+```
 
 ## Contributing
 Don't hesitate to [contribute](https://opensource.guide/how-to-contribute/) or to contact me if you want to improve the project.
