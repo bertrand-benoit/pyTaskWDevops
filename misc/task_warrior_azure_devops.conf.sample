@@ -1,0 +1,16 @@
+[General]
+max_desc_length = 80
+
+[KeywordAndTagReplace]
+MO = mo
+Worker = worker
+Back =
+
+[AzureDevops]
+personal_access_token = mypersonalaccesstoken
+organization_url = https://xxx.visualstudio.com
+project = MyProject
+current_sprint = MyProject\Sprint 8
+assignee = b.benoit
+completed_item_state = Closed
+max_wiql_results = 50

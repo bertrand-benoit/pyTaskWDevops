@@ -1,0 +1,3 @@
+- support quotes in configuration file
+- use logging module
+- use multi task to load both azure & Task Warrior
