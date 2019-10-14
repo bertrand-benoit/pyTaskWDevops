@@ -1,3 +1,5 @@
 - support quotes in configuration file
+- define automatically the current iteration by default
 - use logging module
 - use multi task to load both azure & Task Warrior
+- implement a CLI? for instance to override the iteration to consider
