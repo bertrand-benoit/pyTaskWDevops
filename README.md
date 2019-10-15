@@ -4,9 +4,9 @@ This is a free tool allowing to synchronize [Azure Devops](https://azure.microso
 
 Features:
 
- - creates new Task warrior item for each missing Azure Devops Work item
- - marks 'done' Task warrior item when corresponding Azure Devops Work item is completed
- - various regex patterns can be configured to format Task name according to your criteria
+-   creates new Task warrior item for each missing Azure Devops Work item
+-   marks 'done' Task warrior item when corresponding Azure Devops Work item is completed
+-   various regex patterns can be configured to format Task name according to your criteria
 
 ## Installation
 You can either create a Virtual Environment (recommended if you use several Python projects) or not.
@@ -44,9 +44,9 @@ You can create your configuration file from the [sample](misc/task_warrior_azure
 ### Prerequisites
 Before using this tool, you must:
 
- - install [Task warrior](https://taskwarrior.org/)
- - create a [Personal Access Token](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)
- - create your configuration file from the provided [sample](misc/task_warrior_azure_devops.conf.sample)
+-   install [Task warrior](https://taskwarrior.org/)
+-   create a [Personal Access Token](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)
+-   create your configuration file from the provided [sample](misc/task_warrior_azure_devops.conf.sample)
 
 ### Samples
 For easiest access, you can add the main directory of the project to your **$PATH**.
