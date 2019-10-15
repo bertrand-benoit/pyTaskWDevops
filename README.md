@@ -1,4 +1,5 @@
 # Task warrior and Azure Devops synchronizer version 1.0.0
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/abf1cfe570bb46f9b03c815fbd375fd2)](https://www.codacy.com/manual/bertrand-benoit/pyTaskWDevops?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=bertrand-benoit/pyTaskWDevops&amp;utm_campaign=Badge_Grade)
 
 This is a free tool allowing to synchronize [Azure Devops](https://azure.microsoft.com/en-us/solutions/devops/) Work items with local [Task warrior](https://taskwarrior.org/).
 
