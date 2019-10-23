@@ -8,6 +8,8 @@ from azure.devops.v5_1.work_item_tracking.models import Wiql
 from msrest.authentication import BasicAuthentication
 from taskw import TaskWarrior
 
+WIQL_QUERY_FILE: str = 'azure_devops_wiql.query'
+
 config = configparser.ConfigParser()
 config.read(os.path.expanduser(os.path.join('~', '.config/task_warrior_azure_devops.conf')))
 
@@ -23,15 +25,14 @@ keyword_tag_replace_map: dict = dict(config.items('KeywordAndTagReplace'))
 
 
 def get_azure_devops_work_items(team_project, iteration_path, assigned_to):
+    with open(os.path.join(os.path.dirname(__file__), WIQL_QUERY_FILE), 'r') as f:
+        query_raw = f.read()
+    query_params = {'team_project': team_project, 'assigned_to': assigned_to, 'iteration_path': iteration_path}
+
     credentials = BasicAuthentication('', personal_access_token)
     connection = Connection(base_url=organization_url, creds=credentials)
     wit_client = connection.clients.get_work_item_tracking_client()
-    wiql = Wiql(query=f"""select [System.Id] from WorkItems
-                            where [System.TeamProject] = '{team_project}'
-                            and [System.AssignedTo] contains '{assigned_to}'
-                            and [System.IterationPath] = '{iteration_path}'"""
-                )
-
+    wiql = Wiql(query=query_raw.format(**query_params))
     wiql_results = wit_client.query_by_wiql(wiql, top=max_wiql_results).work_items
     if not wiql_results:
         return []
@@ -56,7 +57,7 @@ def find_taskwarrior_from_azure_devops_id(work_item_id, task_list):
 
 def format_description(desc, tag_list):
     for keyword, tag in keyword_tag_replace_map.items():
-        desc, count = re.subn(r'[\/\s]*\b' + keyword + r'\b[\/\s]*', '', desc)
+        desc, count = re.subn(r'[/\s[]*\b' + keyword + r'\b[]/\s]*', '', desc, flags=re.IGNORECASE)
         if count and tag:
             tag_list.append(tag)
 
@@ -78,6 +79,7 @@ print(f'Found {len(work_items)} work items.')
 for work_item in work_items:
     # Checks if there is already a time warrior task for this Azure Devops item.
     existing_tw = find_taskwarrior_from_azure_devops_id(work_item['id'], tw_tasks)
+
     if existing_tw:
         # There is already a Task Warrior task for this Azure Devops Work items.
         # Checks its state.
@@ -89,7 +91,5 @@ for work_item in work_items:
     elif work_item['state'] != completed_item_state:
         tags = []
         description = f'{work_item["id"]} - ' + format_description(work_item['title'], tags)
-        print(
-            f'{work_item["id"]}: Creating a new task for {work_item}, with description "{description}", and tags "{tags}".')
-        print('description', description, 'tags', tags)
+        print(f'{work_item["id"]}: Creating a new task with description "{description}", and tags "{tags}".')
         task_warrior.task_add(description, project=project.lower(), tags=tags)

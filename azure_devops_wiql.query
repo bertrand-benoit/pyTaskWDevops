@@ -1,0 +1,4 @@
+select [System.Id] from WorkItems
+where [System.TeamProject] = '{team_project}'
+and [System.AssignedTo] contains '{assigned_to}'
+and [System.IterationPath] = '{iteration_path}'
