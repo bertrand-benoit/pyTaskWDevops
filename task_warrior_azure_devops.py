@@ -19,9 +19,10 @@ project: str = config['AzureDevops']['project']
 current_sprint: str = config['AzureDevops']['current_sprint']
 assignee: str = config['AzureDevops']['assignee']
 max_wiql_results: int = int(config['AzureDevops']['max_wiql_results'])
-completed_item_state: str = config['AzureDevops']['completed_item_state']
 max_description_length: int = int(config['General']['max_desc_length'])
 keyword_tag_replace_map: dict = dict(config.items('KeywordAndTagReplace'))
+
+AZURE_ITEM_FINAL_STATES: list = ['Closed', 'Removed']
 
 
 def get_azure_devops_work_items(team_project, iteration_path, assigned_to):
@@ -83,12 +84,12 @@ for work_item in work_items:
     if existing_tw:
         # There is already a Task Warrior task for this Azure Devops Work items.
         # Checks its state.
-        if work_item['state'] == completed_item_state:
+        if work_item['state'] in AZURE_ITEM_FINAL_STATES:
             print(f'{work_item["id"]}: updating state to "done" for completed task {existing_tw[0]}')
-            task_warrior.task_done(id=existing_tw[0]['id'])
+            task_warrior.task_done(uuid=existing_tw[0]['uuid'])
         else:
             print(f'{work_item["id"]}: nothing more to do, found an existing task with good state in task warrior.')
-    elif work_item['state'] != completed_item_state:
+    elif work_item['state'] not in AZURE_ITEM_FINAL_STATES:
         tags = []
         description = f'{work_item["id"]} - ' + format_description(work_item['title'], tags)
         print(f'{work_item["id"]}: Creating a new task with description "{description}", and tags "{tags}".')

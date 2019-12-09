@@ -12,5 +12,4 @@ organization_url = https://xxx.visualstudio.com
 project = MyProject
 current_sprint = MyProject\Sprint 8
 assignee = b.benoit
-completed_item_state = Closed
 max_wiql_results = 50
