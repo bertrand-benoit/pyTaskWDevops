@@ -1,4 +1,8 @@
 #!/bin/env python3
+##
+# Author: Bertrand Benoit <mailto:contact@bertrand-benoit.net>
+# Description: Tool allowing to synchronize Azure Devops Work items with local Task warrior.
+## Version: 1.0
 
 import re
 import os
