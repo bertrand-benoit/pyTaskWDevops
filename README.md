@@ -1,5 +1,7 @@
+:warning: This project is now hosted on [Gitlab](https://gitlab.com/bertrand-benoit/pyTaskWDevops); switch to it to get newer versions.
+
 # Task warrior and Azure Devops synchronizer version 1.0.0
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/abf1cfe570bb46f9b03c815fbd375fd2)](https://www.codacy.com/manual/bertrand-benoit/pyTaskWDevops?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=bertrand-benoit/pyTaskWDevops&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/cbbf99efad97431d8b731f161cdddd4f)](https://www.codacy.com/manual/gitlabRepositories/pyTaskWDevops_2?utm_source=gitlab.com&amp;utm_medium=referral&amp;utm_content=bertrand-benoit/pyTaskWDevops&amp;utm_campaign=Badge_Grade)
 
 This is a free tool allowing to synchronize [Azure Devops](https://azure.microsoft.com/en-us/solutions/devops/) Work items with local [Task warrior](https://taskwarrior.org/).
 
@@ -59,7 +61,7 @@ task_warrior_azure_devops.py
 
 ## Contributing
 Don't hesitate to [contribute](https://opensource.guide/how-to-contribute/) or to contact me if you want to improve the project.
-You can [report issues or request features](https://github.com/bertrand-benoit/pyTaskWDevops/issues) and propose [pull requests](https://github.com/bertrand-benoit/pyTaskWDevops/pulls).
+You can [report issues or request features](https://gitlab.com/bertrand-benoit/pyTaskWDevops/issues) and propose [merge requests](https://gitlab.com/bertrand-benoit/pyTaskWDevops/merge_requests).
 
 ## Versioning
 The versioning scheme we use is [SemVer](http://semver.org/).
